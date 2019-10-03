@@ -2,10 +2,19 @@
 # Author: Suhas Somnath
 # This script will run JupyterLab on a compute node
 
-# Regardless of the rank we want to load the correct (Ana/mini)conda module:
-module purge
-module load PE-gnu
-module load anaconda3/5.1.0-pe3
+# Since you should have a conda environment related to your project
+# to insure reproducibility and reduce disruption from system config changes
+# 
+source .bashrc
+# modules for the compiler/runtime environment your working environment depend on 
+conda activate your_working_environment
+# which minimally needs to have the equivalent of
+# conda install jupyterlab
+
+# if you are just checking it out
+# module purge
+# module load PE-gnu
+# module load anaconda3/5.1.0-pe3
 
 # Working around the annoying permission denied for runtime directory:
 export XDG_RUNTIME_DIR=""
